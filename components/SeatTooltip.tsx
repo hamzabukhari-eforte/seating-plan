@@ -9,7 +9,7 @@ export function SeatTooltip() {
   const payload = useSeatTooltipPayload();
   if (!payload) return null;
 
-  const { seat, roomName, tableId, x, y } = payload;
+  const { seat, roomName, tableLabel, seatNo, x, y } = payload;
   const { left, top } = clampTooltipPosition(x, y);
   const color = statusColors[seat.status];
 
@@ -29,7 +29,8 @@ export function SeatTooltip() {
       </div>
       <SeatTooltipMeta label="Status" value={statusLabels[seat.status]} />
       <SeatTooltipMeta label="Room" value={roomName} />
-      <SeatTooltipMeta label="Table" value={tableId} />
+      <SeatTooltipMeta label="Table" value={tableLabel} />
+      <SeatTooltipMeta label="Seat" value={String(seatNo)} />
       <div className="mt-2 h-[3px] overflow-hidden rounded-full bg-page">
         <div className="h-full w-full rounded-full" style={{ backgroundColor: color }} />
       </div>

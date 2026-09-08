@@ -10,7 +10,7 @@ export function SeatingHeader() {
         Office Seating
       </h3>
       <p className="text-[0.78rem] font-medium text-muted">
-        Hover a seat for agent details. Click a room to zoom in.
+        AWT Plaza layout. Hover a seat for details. Click a room to zoom in.
       </p>
     </header>
   );

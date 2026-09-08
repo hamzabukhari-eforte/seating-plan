@@ -6,7 +6,8 @@ import type { Seat } from '@/lib/types';
 export type TooltipPayload = {
   seat: Seat;
   roomName: string;
-  tableId: string;
+  tableLabel: string;
+  seatNo: number;
   x: number;
   y: number;
 };

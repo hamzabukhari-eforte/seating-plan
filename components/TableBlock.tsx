@@ -3,6 +3,7 @@
 import type { Table } from '@/lib/types';
 import { getSeatPosition } from '@/lib/seatLayout';
 import { Seat } from './Seat';
+import { TableLabel } from './TableLabel';
 import { TableShape } from './TableShape';
 
 interface TableBlockProps {
@@ -14,7 +15,8 @@ export function TableBlock({ table, roomName }: TableBlockProps) {
   return (
     <g>
       <TableShape table={table} />
-      {table.seats.map((seat) => {
+      <TableLabel table={table} />
+      {table.seats.map((seat, index) => {
         const { x, y } = getSeatPosition(table, seat);
         return (
           <Seat
@@ -23,7 +25,8 @@ export function TableBlock({ table, roomName }: TableBlockProps) {
             x={x}
             y={y}
             roomName={roomName}
-            tableId={table.id}
+            tableLabel={table.label ?? table.id}
+            seatNo={index + 1}
           />
         );
       })}

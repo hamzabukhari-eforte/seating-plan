@@ -1,7 +1,9 @@
 'use client';
 
 import type { Room } from '@/lib/types';
-import { theme } from '@/lib/theme';
+import { AmenityMark } from './AmenityMark';
+import { RoomLabel } from './RoomLabel';
+import { RoomSurface } from './RoomSurface';
 import { TableBlock } from './TableBlock';
 
 interface RoomBlockProps {
@@ -18,26 +20,11 @@ export function RoomBlock({ room, onSelect }: RoomBlockProps) {
         onSelect();
       }}
     >
-      <rect
-        x={room.x}
-        y={room.y}
-        width={room.width}
-        height={room.height}
-        rx={10}
-        fill={theme.card}
-        stroke={theme.line}
-        strokeWidth={1.5}
-      />
-      <text
-        x={room.x + 14}
-        y={room.y + 22}
-        fill={theme.primary}
-        fontSize={12}
-        fontWeight={700}
-        letterSpacing={0.3}
-      >
-        {room.name}
-      </text>
+      <RoomSurface room={room} />
+      <RoomLabel room={room} />
+      {(room.amenities ?? []).map((amenity) => (
+        <AmenityMark key={amenity.id} amenity={amenity} />
+      ))}
       {room.tables.map((table) => (
         <TableBlock key={table.id} table={table} roomName={room.name} />
       ))}

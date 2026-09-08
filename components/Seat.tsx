@@ -10,14 +10,15 @@ interface SeatProps {
   x: number;
   y: number;
   roomName: string;
-  tableId: string;
+  tableLabel: string;
+  seatNo: number;
 }
 
-const RADIUS = 9;
+const RADIUS = 6;
 
-export function Seat({ seat, x, y, roomName, tableId }: SeatProps) {
+export function Seat({ seat, x, y, roomName, tableLabel, seatNo }: SeatProps) {
   const { show, hide } = useSeatTooltipActions();
-  const payload = { seat, roomName, tableId };
+  const payload = { seat, roomName, tableLabel, seatNo };
 
   return (
     <circle

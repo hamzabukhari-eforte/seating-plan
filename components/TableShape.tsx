@@ -7,6 +7,21 @@ export function TableShape({ table }: { table: Table }) {
   const fill = theme.page;
   const stroke = theme.line;
 
+  if (table.shape === 'sofa') {
+    return (
+      <rect
+        x={table.x}
+        y={table.y}
+        width={table.width}
+        height={table.height}
+        rx={8}
+        fill={theme.primarySubtle}
+        stroke={theme.primary}
+        strokeWidth={1.2}
+      />
+    );
+  }
+
   if (table.shape === 'round') {
     return (
       <circle
@@ -26,10 +41,10 @@ export function TableShape({ table }: { table: Table }) {
       y={table.y}
       width={table.width}
       height={table.height}
-      rx={10}
+      rx={7}
       fill={fill}
       stroke={stroke}
-      strokeWidth={1.5}
+      strokeWidth={1.4}
     />
   );
 }

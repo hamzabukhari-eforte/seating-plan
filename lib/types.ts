@@ -13,12 +13,37 @@ export interface Seat {
 
 export interface Table {
   id: string;
-  shape: 'rect' | 'round';
+  /** Short code drawn on the table, e.g. `LWS-1`. */
+  label?: string;
+  shape: 'rect' | 'round' | 'sofa';
   x: number;
   y: number;
   width: number;
   height: number;
   seats: Seat[];
+}
+
+export type RoomKind = 'work' | 'service';
+
+export type AmenityKind =
+  | 'stairs'
+  | 'lift'
+  | 'toilet'
+  | 'lockers'
+  | 'pantry'
+  | 'plant'
+  | 'tv'
+  | 'vending'
+  | 'kitchen'
+  | 'stall'
+  | 'urinal'
+  | 'basin';
+
+export interface Amenity {
+  id: string;
+  kind: AmenityKind;
+  x: number;
+  y: number;
 }
 
 export interface Room {
@@ -29,6 +54,10 @@ export interface Room {
   width: number;
   height: number;
   tables: Table[];
+  kind?: RoomKind;
+  amenities?: Amenity[];
+  outline?: 'rect' | 'curve-sw';
+  hatch?: boolean;
 }
 
 export interface Floor {

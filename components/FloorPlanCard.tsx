@@ -12,7 +12,7 @@ export function FloorPlanCard({ floor }: { floor: Floor }) {
           {floor.name}
         </span>
       </div>
-      <div className="rounded-lg border border-line bg-page">
+      <div className="rounded-lg border border-line bg-page p-2">
         <FloorPlan key={floor.id} floor={floor} />
       </div>
     </section>

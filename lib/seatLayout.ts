@@ -1,13 +1,14 @@
 import type { Floor, Room, Seat, SeatSide, Table } from './types';
 
-const SEAT_SPACING = 26;
-const SEAT_OFFSET = 14;
+export const SEAT_SPACING = 32;
+export const SEAT_OFFSET = 16;
 
 export interface RectTableOpts {
   x: number;
   y: number;
   width: number;
   height: number;
+  label?: string;
   seatsTop?: number;
   seatsBottom?: number;
   seatsLeft?: number;
@@ -18,6 +19,7 @@ export interface RoundTableOpts {
   x: number;
   y: number;
   diameter: number;
+  label?: string;
   seatCount: number;
 }
 
@@ -40,12 +42,34 @@ export function createRectTable(id: string, opts: RectTableOpts): Table {
 
   return {
     id,
+    label: opts.label,
     shape: 'rect',
     x: opts.x,
     y: opts.y,
     width: opts.width,
     height: opts.height,
     seats,
+  };
+}
+
+export interface SofaOpts {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  side: SeatSide;
+  seatCount?: number;
+}
+
+export function createSofa(id: string, opts: SofaOpts): Table {
+  return {
+    id,
+    shape: 'sofa',
+    x: opts.x,
+    y: opts.y,
+    width: opts.width,
+    height: opts.height,
+    seats: makeSideSeats(id, opts.side, opts.seatCount ?? 1),
   };
 }
 
@@ -59,6 +83,7 @@ export function createRoundTable(id: string, opts: RoundTableOpts): Table {
 
   return {
     id,
+    label: opts.label,
     shape: 'round',
     x: opts.x,
     y: opts.y,
