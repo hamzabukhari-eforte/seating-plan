@@ -19,7 +19,7 @@ export function SeatingDashboard() {
   return (
     <SeatTooltipProvider>
       <div className="min-h-full bg-background px-5 py-5 text-ink">
-        <div className="mx-auto flex w-full max-w-3xl flex-col gap-4">
+        <div className="mx-auto flex w-full max-w-5xl flex-col gap-4">
           <SeatingHeader />
           <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-line bg-card px-3 py-2.5 shadow-sm">
             <FloorTabs floors={floors} selectedFloorId={selectedFloorId} onSelect={setSelectedFloorId} />

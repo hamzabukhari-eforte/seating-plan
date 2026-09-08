@@ -18,7 +18,7 @@ export function FloorPlan({ floor }: FloorPlanProps) {
   const pad = FLOOR_OUTER_PAD;
 
   return (
-    <div className="relative mx-auto w-full max-w-[540px]">
+    <div className="relative mx-auto w-full max-w-[820px]">
       {room ? <ZoomOutButton onClick={() => setFocusedRoomId(null)} /> : null}
       <svg
         viewBox={viewBox}

@@ -209,34 +209,12 @@ export function floor4(): Floor {
         ]),
       ),
 
-      room('huddle-1', 'Huddle 1', C.x, 548, 92, 112, [
-        fillSeats(
-          createRoundTable('hud-1', { x: 290, y: 592, label: 'HUD-1', diameter: 40, seatCount: 4 }),
-          mix(4, 14),
-        ),
-      ]),
-      room('huddle-2', 'Huddle 2', 364, 548, 92, 112, [
-        fillSeats(
-          createRoundTable('hud-2', { x: 390, y: 592, label: 'HUD-2', diameter: 40, seatCount: 4 }),
-          mix(4, 18),
-        ),
-      ]),
-      room('conference', 'Conference', C.x, 676, C.w, 176, [
-        fillSeats(
-          createRectTable('conf-1', {
-            x: 296,
-            y: 730,
-            label: 'CONF-1',
-            width: 128,
-            height: 48,
-            seatsTop: 3,
-            seatsBottom: 3,
-            seatsLeft: 1,
-            seatsRight: 1,
-          }),
-          mix(8, 76),
-        ),
-      ], { outline: 'curve-sw' }),
+      room('huddle-1', 'Huddle 1', C.x, 548, 92, 112, [], { kind: 'service' }),
+      room('huddle-2', 'Huddle 2', 364, 548, 92, 112, [], { kind: 'service' }),
+      room('conference', 'Conference', C.x, 676, C.w, 176, [], {
+        kind: 'service',
+        outline: 'curve-sw',
+      }),
       room('breakout', 'Break-out', C.x, 868, C.w, 128, [], { kind: 'service', hatch: true }),
       room('lockers-mid', 'Lockers', C.x, 1012, C.w, 80, [], {
         kind: 'service',
