@@ -1,5 +1,5 @@
 import { SeatingDashboard } from '@/components/SeatingDashboard';
 
-export default function HomePage() {
+export default function SeatingPage() {
   return <SeatingDashboard />;
 }

@@ -1,0 +1,27 @@
+---
+description: Keep React components small and composable
+globs: components/**/*.tsx
+alwaysApply: false
+---
+
+# Component size
+
+Every file in `components/` must stay at **50 lines or fewer** (including imports). If a component grows past that, extract a child component or a `lib/` helper.
+
+```tsx
+// ❌ BAD — page-sized component with layout, SVG math, and tooltip in one file
+export function FloorPlan({ floor }: { floor: Floor }) { /* 120 lines */ }
+
+// ✅ GOOD — compose small pieces
+export function FloorPlan({ floor }: { floor: Floor }) {
+  return (
+    <svg viewBox={`0 0 ${floor.width} ${floor.height}`} className="h-auto w-full">
+      {floor.rooms.map((room) => (
+        <RoomBlock key={room.id} room={room} onSelect={() => {}} />
+      ))}
+    </svg>
+  );
+}
+```
+
+Put coordinate math and data in `lib/`, not in JSX files.

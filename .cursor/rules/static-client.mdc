@@ -1,0 +1,14 @@
+---
+description: Static client-only app — no backend until APIs are added later
+alwaysApply: true
+---
+
+# Static client-only frontend
+
+This app is a static export (`output: 'export'`). There is no backend yet.
+
+- Do not add `app/api/**` route handlers, Server Actions, or `fetch` to a backend.
+- Do not use cookies, headers, rewrites, or other server-only Next.js APIs.
+- UI data lives in `lib/` (typed mocks today; swap for APIs later).
+- Interactive UI belongs in `'use client'` components. Pages stay thin.
+- Prefer Tailwind for layout. Use inline SVG `fill`/`stroke` from `lib/statusColors.ts` for seat colors.

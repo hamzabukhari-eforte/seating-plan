@@ -1,0 +1,28 @@
+---
+description: Pages only compose components; no data or UI logic
+globs: app/**/page.tsx
+alwaysApply: false
+---
+
+# Pages compose components
+
+`app/**/page.tsx` files must only import components and render them. No hooks, no mock data, no SVG, no fetch.
+
+```tsx
+// ❌ BAD
+'use client';
+import { useState } from 'react';
+import { floors } from '@/lib/mockData';
+export default function Page() {
+  const [id, setId] = useState(floors[0].id);
+  return <div>{id}</div>;
+}
+
+// ✅ GOOD
+import { SeatingDashboard } from '@/components/SeatingDashboard';
+export default function Page() {
+  return <SeatingDashboard />;
+}
+```
+
+Put state and layout in `components/`. Keep pages as Server Components unless a file convention requires otherwise.
